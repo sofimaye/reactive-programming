@@ -3,15 +3,16 @@ import { Component } from '@angular/core';
 @Component({
     selector: 'my-app',
     template: `
-    <p>Ім'я: {{ name }}</p>
-    <p>Вік: {{ age }}</p>
-    <p>Робота: {{ jobTitle }}</p>
-    <p>Місто: {{ city }}</p>
+    <input type="text" [value]="name" />
+    <input type="text" [value]="age" />
+    <input type="text" [value]="jobTitle" />
+    <input type="text" [value]="city" />
   `
 })
 export class AppComponent {
     name = "Tom";
     age = 25;
-    jobTitle = "Інженер";
-    city = "Київ";
+    jobTitle = "Инженер";
+    city = "Киев";
 }
+
