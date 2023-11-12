@@ -3,27 +3,18 @@ import { Component } from '@angular/core';
 @Component({
     selector: 'my-app',
     template: `
-    <p>Ім'я: {{ name }}</p>
-    <p>Вік: {{ age }}</p>
-    <input type="text" [(ngModel)]="name" /><br/>
-    <input type="number" [(ngModel)]="age" />
-    <p>Текст: {{ name }}</p>
-    <table border="1">
-      <tr><td [attr.colspan]="colspan">One-Two</td></tr>
-      <tr><td>Three</td><td>Four</td></tr>
-      <tr><td>Five</td><td>Six</td></tr>
-    </table>
-    <p>Кількість кліків: {{ count }}</p>
-    <button (click)="increase()">Click</button>
-  `
+    <div [class.is-red]="isRed" [class.is-blue]="isBlue"></div>
+    <div [style.background-color]="isRed ? 'red' : 'green'"></div>
+    <input type="checkbox" [(ngModel)]="isRed" /> Red
+    <input type="checkbox" [(ngModel)]="isBlue" /> Blue
+  `,
+    styles: [`
+    div { width: 50px; height: 50px; border: 1px solid #ccc; margin-bottom: 10px; }
+    .is-red { background-color: red; }
+    .is-blue { background-color: blue; }
+  `]
 })
 export class AppComponent {
-    name = 'Tom';
-    age = 25;
-    colspan = 2;
-    count = 0;
-
-    increase(): void {
-        this.count++;
-    }
+    isRed = false;
+    isBlue = false;
 }
