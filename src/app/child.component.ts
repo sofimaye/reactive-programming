@@ -2,20 +2,24 @@ import {Input, Component} from '@angular/core';
 
 @Component({
     selector: 'child-comp',
-    template: `
-        <ng-content></ng-content>
-        <p>Привіт {{name}}</p>
-        <p>Ім’я користувача: {{userName}}</p>
-        <p>Вік користувача: {{userAge}}</p>`,
-
-    styles: [`
-        p{color: red}
-        p{font-size:15px}
-    `]
+    template: `<p>Ім’я користувача: {{userName}}</p>
+    <p>Вік користувача: {{userAge}}</p>`
 })
 
 export class ChildComponent {
-    name: string = "Тарас";
     @Input() userName: string = "";
-    @Input() userAge: number = 0;
+    _userAge: number = 0;
+    @Input()
+    set userAge(age: number) {
+        if (age < 0)
+            this._userAge = 0;
+        else if (age > 100)
+            this._userAge = 100;
+        else
+            this._userAge = age;
+    }
+
+    get userAge() {
+        return this._userAge;
+    }
 }
